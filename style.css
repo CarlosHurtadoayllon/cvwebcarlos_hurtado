@@ -637,9 +637,19 @@ h1, h2, h3 { font-family: 'Outfit', sans-serif; }
     }
 
     /* Force Page 2 Start exactly on Experience & Side Info */
-    section:has(.ribbon-outline), section:has(.trophy-outline) {
+    section:has(.ribbon-outline), section:has(.trophy-outline), section:has(.school-outline) {
         page-break-before: always;
         padding-top: 5mm !important;
+    }
+
+    /* Ensure Career Milestones doesn't break internally if possible */
+    .timeline {
+        break-inside: avoid;
+    }
+
+    /* Make sure Education stays on Page 2 */
+    .education-card {
+        break-inside: avoid !important;
     }
 
     .main-column { flex: 2 !important; border-right: 1px solid #e2e8f0 !important; padding-right: 15px !important; }
@@ -693,4 +703,3 @@ h1, h2, h3 { font-family: 'Outfit', sans-serif; }
     .executive-synchro-footer { flex-direction: column; text-align: center; padding: 40px; }
     .synchro-actions { justify-content: center; flex-direction: column; }
 }
-
