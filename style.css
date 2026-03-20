@@ -549,60 +549,86 @@ h1, h2, h3 { font-family: 'Outfit', sans-serif; }
 @media print {
     :root {
         --primary-bg: #ffffff;
-        --text-primary: #0f172a;
-        --text-secondary: #334155;
-        --text-muted: #64748b;
-        --accent: #b45309; 
+        --text-primary: #000000 !important;
+        --text-secondary: #334155 !important;
+        --text-muted: #64748b !important;
+        --accent: #b45309 !important; 
         --border-color: #e2e8f0;
-        --glass-bg: #f8fafc;
+        --glass-bg: #ffffff;
     }
 
-    @page { margin: 10mm; size: A4; }
+    @page { margin: 15mm; size: A4; }
 
     body {
         background: #fff !important;
         color: #000 !important;
-        font-size: 9.5pt;
+        font-size: 10pt;
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
     }
 
+    /* ALL TEXT TO BLACK/DARK FOR CONTRAST */
+    h1, h2, h3, h4, span, p, li, b, a, .skill-tags span {
+        color: #000 !important;
+        text-shadow: none !important;
+    }
+
     .web-cv-container { padding: 0; max-width: 100%; border: none; margin: 0; }
     
-    /* Force Grid Layouts for Print */
-    .hero-content { display: flex !important; flex-direction: row !important; gap: 40px !important; margin-bottom: 30px; }
+    /* 🖼️ PHOTO VISIBILITY FIX */
+    .hero-sidebar, .profile-photo-container {
+        background: transparent !important;
+        border: none !important;
+        padding: 0 !important;
+    }
+    .profile-photo { 
+        width: 140px !important; 
+        height: 140px !important; 
+        border-radius: 12px;
+        border: 1px solid #000 !important;
+        display: block !important;
+    }
+
+    /* 📄 PAGE BREAKS LOGIC */
+    
+    /* Page 1: Hero & Summary */
+    .hero-section { margin-bottom: 40px !important; }
+    .metrics-grid { margin-bottom: 40px !important; }
+    
+    /* Page 2 Start: Hitos de Carrera & Formación */
+    .content-layout { 
+        page-break-before: always; 
+        padding-top: 30px;
+        display: grid !important; 
+        grid-template-columns: 8fr 4fr !important; 
+        gap: 30px !important;
+    }
+
+    /* Page 3 Start: Áreas de Dominio Estratégico */
+    .footer-skills { 
+        page-break-before: always; 
+        padding-top: 30px;
+        border-top: none !important;
+    }
+
+    /* Layout Forces */
+    .hero-content { display: flex !important; flex-direction: row !important; gap: 40px !important; }
     .hero-text { flex: 1 !important; }
-    .hero-visual-container { flex: 0 0 180px !important; }
-    .profile-photo { width: 150px !important; height: 150px !important; border-radius: 12px; }
+    .hero-visual-container { flex: 0 0 160px !important; }
 
     .metrics-grid { 
         display: grid !important;
         grid-template-columns: repeat(4, 1fr) !important; 
-        gap: 15px !important;
-        margin-bottom: 25px !important; 
-    }
-
-    .content-layout { 
-        display: grid !important; 
-        grid-template-columns: 8fr 4fr !important; 
-        gap: 30px !important; 
+        gap: 15px !important; 
     }
 
     .skills-universe { 
         display: grid !important;
         grid-template-columns: repeat(3, 1fr) !important; 
-        gap: 15px !important; 
-        margin: 15px 0 !important;
+        gap: 20px !important; 
     }
 
-    /* Professional Backgrounds & Borders */
-    .glass-card, .job-card, .metric-card, .evolution-item, .lang-tag, .executive-synchro-footer, .skill-tags span {
-        background: #f8fafc !important;
-        border: 1px solid #e2e8f0 !important;
-        box-shadow: none !important;
-        color: #000 !important;
-    }
-
+    /* Accents & Professional Styling */
     .accent-text, .job-company, .edu-inst, .qr-sub-text, .metric-value, .skill-group h3, .synchro-content h2 .accent-text { 
         color: #b45309 !important; 
         font-weight: bold !important;
@@ -611,36 +637,23 @@ h1, h2, h3 { font-family: 'Outfit', sans-serif; }
     .executive-badge { 
         background: #fef3c7 !important; 
         color: #b45309 !important; 
-        border: 1px solid #fcd34d !important; 
+        border: 1px solid #b45309 !important; 
         padding: 4px 12px !important;
     }
 
-    /* Hide Web Interactivity */
+    .job-card, .metric-card, .evolution-item, .lang-tag, .executive-synchro-footer, .skill-tags span {
+        background: #fff !important;
+        border: 1px solid #ccc !important;
+        box-shadow: none !important;
+    }
+
+    /* Hide Pure Web Elements */
     .download-btn, .contact-right-actions, .cta-instruction, .qr-impact-footer, .synchro-actions, .cta-icon, .metric-icon, .synchro-qr-box {
         display: none !important;
     }
 
-    .hero-name { font-size: 22pt !important; color: #000 !important; margin-bottom: 5px; white-space: normal !important; letter-spacing: -1px; }
-    .hero-role { font-size: 11pt !important; color: #334155 !important; line-height: 1.4; }
-
-    .job-title-group h3 { font-size: 13pt !important; color: #000 !important; }
-    .job-highlights li { font-size: 9pt !important; color: #334155 !important; margin-bottom: 5px; }
-
-    .skill-tags span {
-        padding: 3px 8px !important;
-        font-size: 8.5pt !important;
-        background: #f1f5f9 !important;
-    }
-
-    .executive-synchro-footer {
-        padding: 20px !important;
-        border-radius: 12px !important;
-        margin-top: 20px !important;
-        background: #f8fafc !important;
-    }
-
-    .synchro-content h2 { font-size: 16pt !important; }
-    .synchro-content p { font-size: 9.5pt !important; color: #475569 !important; }
+    .hero-name { font-size: 26pt !important; letter-spacing: -1px; }
+    .hero-role { font-size: 12pt !important; color: #333 !important; }
 }
 
 @media (max-width: 1024px) {
