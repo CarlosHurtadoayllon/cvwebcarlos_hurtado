@@ -548,112 +548,83 @@ h1, h2, h3 { font-family: 'Outfit', sans-serif; }
 /* 🖨️ PRINT OPTIMIZATION (OFFICIAL CLEAN WHITE VERSION) */
 @media print {
     :root {
-        --primary-bg: #ffffff;
+        --primary-bg: #ffffff !important;
         --text-primary: #000000 !important;
-        --text-secondary: #334155 !important;
-        --text-muted: #64748b !important;
+        --text-secondary: #000000 !important;
+        --text-muted: #1e293b !important;
         --accent: #b45309 !important; 
-        --border-color: #e2e8f0;
-        --glass-bg: #ffffff;
+        --border-color: #000000 !important;
     }
 
-    @page { margin: 15mm; size: A4; }
+    @page { margin: 10mm; size: A4; }
 
     body {
         background: #fff !important;
         color: #000 !important;
         font-size: 10pt;
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
     }
 
-    /* ALL TEXT TO BLACK/DARK FOR CONTRAST */
-    h1, h2, h3, h4, span, p, li, b, a, .skill-tags span {
+    /* FORCE ALL TEXT TO BLACK FOR ABSOLUTE CONTRAST */
+    h1, h2, h3, h4, span, p, li, b, a, .skill-tags span, .job-highlights li, .edu-date, .edu-inst, .lang-tag {
         color: #000 !important;
         text-shadow: none !important;
+        opacity: 1 !important;
+    }
+    
+    .accent-text, .job-company, .edu-inst, .metric-value, .skill-group h3 {
+        color: #b45309 !important;
     }
 
-    .web-cv-container { padding: 0; max-width: 100%; border: none; margin: 0; }
-    
     /* 🖼️ PHOTO VISIBILITY FIX */
-    .hero-sidebar, .profile-photo-container {
-        background: transparent !important;
-        border: none !important;
-        padding: 0 !important;
-    }
-    .profile-photo { 
-        width: 140px !important; 
-        height: 140px !important; 
-        border-radius: 12px;
-        border: 1px solid #000 !important;
-        display: block !important;
-    }
+    .hero-content { display: flex !important; flex-direction: row !important; gap: 30px !important; }
+    .hero-visual-container { display: block !important; flex: 0 0 160px !important; opacity: 1 !important; visibility: visible !important; }
+    .profile-photo-container { border: 1px solid #000 !important; width: 140px !important; height: 140px !important; overflow: hidden !important; }
+    .profile-photo { width: 100% !important; height: 100% !important; object-fit: cover !important; display: block !important; }
 
-    /* 📄 PAGE BREAKS LOGIC */
+    /* 📄 PAGE BREAKS & LAYOUT */
+    .hero-section { margin-bottom: 20px !important; }
+    .metrics-grid { margin-bottom: 20px !important; }
     
-    /* Page 1: Hero & Summary */
-    .hero-section { margin-bottom: 40px !important; }
-    .metrics-grid { margin-bottom: 40px !important; }
-    
-    /* Page 2 Start: Hitos de Carrera & Formación */
-    .content-layout { 
+    /* Force Career Milestones to Page 2 */
+    section:has(.trophy-outline), section:has(.ribbon-outline), .content-layout { 
         page-break-before: always; 
-        padding-top: 30px;
-        display: grid !important; 
-        grid-template-columns: 8fr 4fr !important; 
-        gap: 30px !important;
+        padding-top: 20px !important;
     }
-
-    /* Page 3 Start: Áreas de Dominio Estratégico */
+    
+    /* Page 3: Strategic Domains */
     .footer-skills { 
         page-break-before: always; 
-        padding-top: 30px;
-        border-top: none !important;
-    }
-
-    /* Layout Forces */
-    .hero-content { display: flex !important; flex-direction: row !important; gap: 40px !important; }
-    .hero-text { flex: 1 !important; }
-    .hero-visual-container { flex: 0 0 160px !important; }
-
-    .metrics-grid { 
-        display: grid !important;
-        grid-template-columns: repeat(4, 1fr) !important; 
-        gap: 15px !important; 
-    }
-
-    .skills-universe { 
-        display: grid !important;
-        grid-template-columns: repeat(3, 1fr) !important; 
-        gap: 20px !important; 
-    }
-
-    /* Accents & Professional Styling */
-    .accent-text, .job-company, .edu-inst, .qr-sub-text, .metric-value, .skill-group h3, .synchro-content h2 .accent-text { 
-        color: #b45309 !important; 
-        font-weight: bold !important;
-    }
-
-    .executive-badge { 
-        background: #fef3c7 !important; 
-        color: #b45309 !important; 
-        border: 1px solid #b45309 !important; 
-        padding: 4px 12px !important;
-    }
-
-    .job-card, .metric-card, .evolution-item, .lang-tag, .executive-synchro-footer, .skill-tags span {
+        padding-top: 20px !important;
         background: #fff !important;
-        border: 1px solid #ccc !important;
+    }
+
+    /* Management Achievements Size Optimization */
+    .evolution-item { padding: 10px !important; margin-bottom: 5px !important; }
+    .evolution-info h3 { font-size: 9pt !important; }
+    .evolution-info p { font-size: 8pt !important; }
+
+    /* Skill Tags Contrast & Visibility */
+    .skill-tags span {
+        background: #fff !important;
+        border: 1.5px solid #000 !important;
+        color: #000 !important;
+        font-weight: bold !important;
+        padding: 4px 10px !important;
+        display: inline-block !important;
+    }
+    
+    /* UI Clean Fixes */
+    .glass-card, .job-card, .metric-card, .lang-tag {
+        background: #fff !important;
+        border: 1px solid #000 !important;
         box-shadow: none !important;
     }
 
-    /* Hide Pure Web Elements */
-    .download-btn, .contact-right-actions, .cta-instruction, .qr-impact-footer, .synchro-actions, .cta-icon, .metric-icon, .synchro-qr-box {
+    .download-btn, .contact-right-actions, .qr-impact-footer, .synchro-actions, .cta-icon, .metric-icon, .synchro-qr-box {
         display: none !important;
     }
-
-    .hero-name { font-size: 26pt !important; letter-spacing: -1px; }
-    .hero-role { font-size: 12pt !important; color: #333 !important; }
 }
 
 @media (max-width: 1024px) {
