@@ -545,84 +545,135 @@ h1, h2, h3 { font-family: 'Outfit', sans-serif; }
     text-align: center; 
 }
 
-/* 🖨️ PRINT OPTIMIZATION (OFFICIAL CLEAN WHITE VERSION) */
+/* 🖨️ PRINT OPTIMIZATION (MIRRORING HJALMAR'S EXECUTIVE ENGINE) */
 @media print {
-    :root {
-        --primary-bg: #ffffff !important;
-        --text-primary: #000000 !important;
-        --text-secondary: #000000 !important;
-        --text-muted: #1e293b !important;
-        --accent: #b45309 !important; 
-        --border-color: #000000 !important;
+    @page {
+        size: A4;
+        margin: 12mm 10mm;
     }
 
-    @page { margin: 10mm; size: A4; }
-
-    body {
-        background: #fff !important;
-        color: #000 !important;
-        font-size: 10pt;
+    /* Absolute Reset & Legibility */
+    * {
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
-    }
-
-    /* FORCE ALL TEXT TO BLACK FOR ABSOLUTE CONTRAST */
-    h1, h2, h3, h4, span, p, li, b, a, .skill-tags span, .job-highlights li, .edu-date, .edu-inst, .lang-tag {
-        color: #000 !important;
         text-shadow: none !important;
-        opacity: 1 !important;
-    }
-    
-    .accent-text, .job-company, .edu-inst, .metric-value, .skill-group h3 {
-        color: #b45309 !important;
+        filter: none !important;
+        backdrop-filter: none !important;
     }
 
-    /* 🖼️ PHOTO VISIBILITY FIX */
-    .hero-content { display: flex !important; flex-direction: row !important; gap: 30px !important; }
-    .hero-visual-container { display: block !important; flex: 0 0 160px !important; opacity: 1 !important; visibility: visible !important; }
-    .profile-photo-container { border: 1px solid #000 !important; width: 140px !important; height: 140px !important; overflow: hidden !important; }
-    .profile-photo { width: 100% !important; height: 100% !important; object-fit: cover !important; display: block !important; }
-
-    /* 📄 PAGE BREAKS & LAYOUT */
-    .hero-section { margin-bottom: 20px !important; }
-    .metrics-grid { margin-bottom: 20px !important; }
-    
-    /* Force Career Milestones to Page 2 */
-    section:has(.trophy-outline), section:has(.ribbon-outline), .content-layout { 
-        page-break-before: always; 
-        padding-top: 20px !important;
+    body, html {
+        background: white !important;
+        color: #0f172a !important;
+        font-size: 9pt;
+        line-height: 1.25;
     }
-    
+
+    .no-print { display: none !important; }
+
+    /* Force White Backgrounds & High Contrast */
+    .web-cv-container, body, main, aside, section, .glass-card, .job-card, .metric-card, .evolution-item, .lang-tag, .executive-synchro-footer {
+        background-color: white !important;
+        background: white !important;
+        border-color: #cbd5e1 !important;
+        color: #0f172a !important;
+        box-shadow: none !important;
+        margin: 0 !important;
+    }
+
+    /* Contrast for Bold Elements */
+    strong, b, .font-semibold, .font-bold, h1, h2, h3, h4 {
+        color: #000000 !important;
+        font-weight: 800 !important;
+    }
+
+    /* Hjalmar's Amber Contrast Fix */
+    .accent-text, .job-company, .edu-inst, .metric-value, .skill-group h3, .synchro-content h2 .accent-text {
+        color: #92400e !important; /* Toasted Amber for paper contrast */
+    }
+
+    /* Executive Header (Page 1) */
+    .hero-section {
+        border-bottom: 3px solid #b45309 !important;
+        padding-bottom: 15px !important;
+        margin-bottom: 20px !important;
+        position: relative !important;
+        min-height: 42mm !important;
+    }
+
+    .hero-name { font-size: 24pt !important; color: #000 !important; }
+    .hero-role { font-size: 11pt !important; color: #1e293b !important; }
+
+    /* Photo Logic - Fixed and Visible */
+    .hero-visual-container {
+        width: 40mm !important;
+        height: 40mm !important;
+        position: absolute !important;
+        right: 0 !important;
+        top: 0 !important;
+        z-index: 50 !important;
+        display: block !important;
+    }
+    .profile-photo-container { border: 2px solid #b45309 !important; }
+    .profile-photo { width: 100% !important; height: 100% !important; display: block !important; opacity: 1 !important; }
+
+    /* Metrics Dashboard (Page 1) */
+    .metrics-grid {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 8px !important;
+        border: 1.5px solid #cbd5e1 !important;
+        background: #f8fafc !important;
+        padding: 10px !important;
+        margin-bottom: 20px !important;
+        break-inside: avoid;
+    }
+
+    /* Layout Columns (Hjalmar Style) */
+    .content-layout {
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 15px !important;
+        page-break-before: always; /* Force Experience to Page 2 */
+        padding-top: 10mm !important;
+    }
+
+    .main-column { flex: 2 !important; border-right: 1px solid #e2e8f0 !important; padding-right: 15px !important; }
+    .sidebar-column { flex: 1 !important; padding-left: 5px !important; }
+
     /* Page 3: Strategic Domains */
     .footer-skills { 
         page-break-before: always; 
-        padding-top: 20px !important;
-        background: #fff !important;
+        padding-top: 10mm !important;
+        background: white !important;
     }
 
-    /* Management Achievements Size Optimization */
-    .evolution-item { padding: 10px !important; margin-bottom: 5px !important; }
-    .evolution-info h3 { font-size: 9pt !important; }
-    .evolution-info p { font-size: 8pt !important; }
+    .skills-universe {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr 1fr !important;
+        gap: 10px !important;
+    }
 
-    /* Skill Tags Contrast & Visibility */
     .skill-tags span {
-        background: #fff !important;
-        border: 1.5px solid #000 !important;
+        background: #f1f5f9 !important;
         color: #000 !important;
-        font-weight: bold !important;
-        padding: 4px 10px !important;
-        display: inline-block !important;
-    }
-    
-    /* UI Clean Fixes */
-    .glass-card, .job-card, .metric-card, .lang-tag {
-        background: #fff !important;
-        border: 1px solid #000 !important;
-        box-shadow: none !important;
+        font-size: 8pt !important;
+        border: 1.5px solid #cbd5e1 !important;
+        padding: 2px 6px !important;
+        font-weight: 700 !important;
     }
 
-    .download-btn, .contact-right-actions, .qr-impact-footer, .synchro-actions, .cta-icon, .metric-icon, .synchro-qr-box {
+    /* Management Achievements (Optimized Size) */
+    .evolution-item {
+        break-inside: avoid !important;
+        padding: 6px !important;
+        margin-bottom: 5px !important;
+        border: 1px solid #e2e8f0 !important;
+    }
+    .evolution-info h3 { font-size: 8.5pt !important; }
+    .evolution-info p { font-size: 7.5pt !important; }
+
+    /* Hide Web Interactivity */
+    .download-btn, .whatsapp-btn, .qr-impact-footer, .synchro-actions, .cta-icon, .metric-icon, .synchro-qr-box {
         display: none !important;
     }
 }
@@ -637,3 +688,4 @@ h1, h2, h3 { font-family: 'Outfit', sans-serif; }
     .executive-synchro-footer { flex-direction: column; text-align: center; padding: 40px; }
     .synchro-actions { justify-content: center; flex-direction: column; }
 }
+
