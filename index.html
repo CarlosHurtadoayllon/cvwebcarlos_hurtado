@@ -45,7 +45,7 @@
                             </div>
                         </div>
                         <div class="contact-right-actions">
-                            <button onclick="window.print()" class="action-btn download-btn" id="downloadBtn">
+                            <button type="button" onclick="window.print();" class="action-btn download-btn" id="downloadBtn">
                                 <ion-icon name="cloud-download-outline"></ion-icon>
                                 <span>Descargar e Imprimir CV</span>
                             </button>
@@ -296,10 +296,10 @@
     </div>
     <!-- JavaScript for Download Trigger -->
     <script>
-        document.getElementById('downloadBtn').onclick = function(e) {
-            // Keep the default download behavior but add a fallback for some environments
-            console.log("Iniciando descarga de CV...");
-        };
+        // Button Logic
+        document.getElementById('downloadBtn').addEventListener('click', function(e) {
+            window.print();
+        });
     </script>
 </body>
 </html>
