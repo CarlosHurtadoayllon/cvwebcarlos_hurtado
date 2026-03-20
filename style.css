@@ -596,22 +596,31 @@ h1, h2, h3 { font-family: 'Outfit', sans-serif; }
         border-bottom: 3px solid #b45309 !important;
         padding-bottom: 15px !important;
         margin-bottom: 20px !important;
-        position: relative !important;
-        min-height: 42mm !important;
+        min-height: auto !important;
+    }
+
+    .hero-content {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: flex-start !important;
+    }
+
+    .hero-text {
+        flex: 1 !important;
+        padding-right: 20px !important;
     }
 
     .hero-name { font-size: 24pt !important; color: #000 !important; }
     .hero-role { font-size: 11pt !important; color: #1e293b !important; }
 
-    /* Photo Logic - Fixed and Visible */
+    /* Photo Logic - Fixed and Visible (Not overlapping) */
     .hero-visual-container {
-        width: 40mm !important;
-        height: 40mm !important;
-        position: absolute !important;
-        right: 0 !important;
-        top: 0 !important;
-        z-index: 50 !important;
+        width: 38mm !important;
+        height: 38mm !important;
         display: block !important;
+        flex-shrink: 0 !important;
+        margin-top: 10px !important;
     }
     .profile-photo-container { border: 2px solid #b45309 !important; }
     .profile-photo { width: 100% !important; height: 100% !important; display: block !important; opacity: 1 !important; }
@@ -637,9 +646,14 @@ h1, h2, h3 { font-family: 'Outfit', sans-serif; }
     }
 
     /* Force Page 2 Start exactly on Experience & Side Info */
-    section:has(.ribbon-outline), section:has(.trophy-outline), section:has(.school-outline) {
+    section:has(.ribbon-outline), section:has(.school-outline) {
         page-break-before: always;
         padding-top: 5mm !important;
+    }
+
+    /* Force "Logros de Gestión" (Trophy Icon) to Page 2 too */
+    section:has(.trophy-outline) {
+        page-break-before: always;
     }
 
     /* Ensure Career Milestones doesn't break internally if possible */
