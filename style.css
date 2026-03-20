@@ -545,11 +545,14 @@ h1, h2, h3 { font-family: 'Outfit', sans-serif; }
     text-align: center; 
 }
 
+/* Print break helper - invisible on web */
+.print-page-break { display: none; }
+
 /* 🖨️ PRINT OPTIMIZATION (MIRRORING HJALMAR'S EXECUTIVE ENGINE) */
 @media print {
     @page {
         size: A4;
-        margin: 12mm 10mm;
+        margin: 8mm 10mm;
     }
 
     /* Absolute Reset & Legibility */
@@ -614,13 +617,13 @@ h1, h2, h3 { font-family: 'Outfit', sans-serif; }
     .hero-name { font-size: 24pt !important; color: #000 !important; }
     .hero-role { font-size: 11pt !important; color: #1e293b !important; }
 
-    /* Photo Logic - Fixed and Visible (Not overlapping) */
+    /* Photo Logic - Smaller to reclaim space (32mm) */
     .hero-visual-container {
-        width: 38mm !important;
-        height: 38mm !important;
+        width: 32mm !important;
+        height: 32mm !important;
         display: block !important;
         flex-shrink: 0 !important;
-        margin-top: 10px !important;
+        margin-top: 5px !important;
     }
     .profile-photo-container { border: 2px solid #b45309 !important; }
     .profile-photo { width: 100% !important; height: 100% !important; display: block !important; opacity: 1 !important; }
@@ -645,15 +648,24 @@ h1, h2, h3 { font-family: 'Outfit', sans-serif; }
         padding-top: 10mm !important;
     }
 
-    /* Force Page 2 Start exactly on Experience & Side Info */
-    section:has(.ribbon-outline), section:has(.school-outline) {
-        page-break-before: always;
-        padding-top: 5mm !important;
+    /* Print break div: forces Page 2 to start BEFORE Hitos de Carrera */
+    .print-page-break {
+        display: block !important;
+        page-break-before: always !important;
+        break-before: always !important;
+        height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
     }
 
-    /* Force "Logros de Gestión" (Trophy Icon) to Page 2 too */
+    /* Remove unreliable CSS-only breaks (HTML div takes over) */
+    section:has(.ribbon-outline), section:has(.school-outline) {
+        page-break-before: auto !important;
+    }
+
+    /* Logros de Gestion stays on Page 1 */
     section:has(.trophy-outline) {
-        page-break-before: always;
+        page-break-before: auto !important;
     }
 
     /* Ensure Career Milestones doesn't break internally if possible */
