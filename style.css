@@ -147,7 +147,20 @@ h1, h2, h3 { font-family: 'Outfit', sans-serif; }
 .download-btn {
     background: var(--accent);
     color: #000;
+    border: none;
+    outline: none;
+    cursor: pointer;
     box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+}
+
+.download-btn:hover {
+    background: #f59e0b;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
+}
+
+.download-btn:active {
+    transform: translateY(0);
 }
 
 .whatsapp-btn {
@@ -476,6 +489,7 @@ h1, h2, h3 { font-family: 'Outfit', sans-serif; }
     letter-spacing: 0.5px;
 }
 
+/* HIGH VISIBILITY SECTION HEADERS */
 .section-header.center { justify-content: center; text-align: center; }
 .section-header.center h2 { font-size: 2.5rem; }
 
@@ -503,7 +517,6 @@ h1, h2, h3 { font-family: 'Outfit', sans-serif; }
     gap: 12px; 
 }
 
-/* HIGH VISIBILITY GLASS CAPSULES */
 .skill-tags span { 
     background: rgba(255, 255, 255, 0.05); 
     border: 1px solid rgba(255, 255, 255, 0.15);
@@ -530,4 +543,92 @@ h1, h2, h3 { font-family: 'Outfit', sans-serif; }
     color: var(--text-muted); 
     font-size: 0.9rem; 
     text-align: center; 
+}
+
+/* 🖨️ PRINT OPTIMIZATION (OFFICIAL CLEAN WHITE VERSION) */
+@media print {
+    :root {
+        --primary-bg: #ffffff;
+        --text-primary: #0f172a;
+        --text-secondary: #334155;
+        --text-muted: #64748b;
+        --accent: #b45309; 
+        --border-color: #e2e8f0;
+        --glass-bg: #f8fafc;
+    }
+
+    @page { margin: 15mm; size: A4; }
+
+    body {
+        background: #fff !important;
+        color: #000 !important;
+        font-size: 10pt;
+    }
+
+    .web-cv-container { padding: 0; max-width: 100%; border: none; }
+    
+    .glass-card, .job-card, .metric-card, .evolution-item, .lang-tag, .executive-synchro-footer, .hero-sidebar, .skill-tags span {
+        background: #fff !important;
+        border: 1px solid #eee !important;
+        box-shadow: none !important;
+        backdrop-filter: none !important;
+        color: #000 !important;
+    }
+
+    .accent-text, .job-company, .edu-inst, .qr-sub-text, .metric-value, .skill-group h3 { 
+        color: var(--accent) !important; 
+        font-weight: bold !important;
+    }
+
+    .executive-badge { background: #fef3c7 !important; color: #b45309 !important; border: 1px solid #fcd34d !important; }
+
+    .download-btn, .contact-right-actions, .cta-instruction, .qr-impact-footer, .synchro-actions, .cta-icon, .metric-icon {
+        display: none !important;
+    }
+
+    .hero-name { font-size: 24pt !important; color: #000 !important; margin-bottom: 10px; white-space: normal !important; }
+    .hero-role { font-size: 12pt !important; color: #334155 !important; }
+
+    .metrics-grid { 
+        grid-template-columns: repeat(4, 1fr) !important; 
+        margin-bottom: 30px; 
+    }
+
+    .metric-card { padding: 10px !important; }
+    .metric-value { font-size: 14pt !important; }
+
+    .content-layout { display: grid !important; grid-template-columns: 8fr 4fr !important; gap: 40px !important; }
+    
+    .timeline::before { background: #eee !important; }
+    .time-marker { background: #fff !important; border-color: var(--accent) !important; }
+
+    .skills-universe { 
+        grid-template-columns: repeat(3, 1fr) !important; 
+        gap: 20px !important; 
+        margin: 20px 0 !important;
+    }
+    
+    .skill-tags span {
+        padding: 4px 10px !important;
+        font-size: 9pt !important;
+    }
+
+    .executive-synchro-footer {
+        padding: 20px !important;
+        border-radius: 12px !important;
+        margin-top: 40px !important;
+    }
+
+    .synchro-content h2 { font-size: 18pt !important; }
+}
+
+@media (max-width: 1024px) {
+    .hero-content { flex-direction: column; gap: 40px; }
+    .hero-name { font-size: 2.8rem; white-space: normal; }
+    .contact-interface { flex-direction: column; }
+    .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+    .content-layout { grid-template-columns: 1fr; }
+    .skills-universe { grid-template-columns: 1fr; }
+    .executive-synchro-footer { flex-direction: column; text-align: center; padding: 40px; }
+    .synchro-actions { justify-content: center; flex-direction: column; }
 }
