@@ -633,8 +633,13 @@ h1, h2, h3 { font-family: 'Outfit', sans-serif; }
         display: flex !important;
         flex-direction: row !important;
         gap: 15px !important;
-        page-break-before: always; /* Force Experience to Page 2 */
         padding-top: 10mm !important;
+    }
+
+    /* Force Page 2 Start exactly on Experience & Side Info */
+    section:has(.ribbon-outline), section:has(.trophy-outline) {
+        page-break-before: always;
+        padding-top: 5mm !important;
     }
 
     .main-column { flex: 2 !important; border-right: 1px solid #e2e8f0 !important; padding-right: 15px !important; }
@@ -672,8 +677,8 @@ h1, h2, h3 { font-family: 'Outfit', sans-serif; }
     .evolution-info h3 { font-size: 8.5pt !important; }
     .evolution-info p { font-size: 7.5pt !important; }
 
-    /* Hide Web Interactivity */
-    .download-btn, .whatsapp-btn, .qr-impact-footer, .synchro-actions, .cta-icon, .metric-icon, .synchro-qr-box {
+    /* Hide Web Interactivity & Requested Sections */
+    .download-btn, .whatsapp-btn, .qr-impact-footer, .synchro-actions, .cta-icon, .metric-icon, .synchro-qr-box, .executive-synchro-footer {
         display: none !important;
     }
 }
