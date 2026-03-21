@@ -804,47 +804,39 @@ h1, h2, h3 { font-family: 'Outfit', sans-serif; }
     .job-title-group h3 { font-size: 1.1rem; }
     .job-header { flex-direction: column; gap: 10px; }
 
-    /* TAB 1: PERFIL - Show Hero, Metrics, Resumen, Milestones */
-    body.tab-perfil .sidebar-column, 
+    /* TABS LOGIC - 2 TABS EXTREMELY SPECIFIC */
+    /* Tab 1: PERFIL */
+    body.tab-perfil .sidebar-column,
     body.tab-perfil #section-skills,
-    body.tab-perfil .executive-synchro-footer,
-    body.tab-perfil .print-page-break {
+    body.tab-perfil .executive-synchro-footer {
         display: none !important;
     }
 
+    body.tab-perfil #section-hero,
+    body.tab-perfil .metrics-grid,
     body.tab-perfil .main-column {
         display: block !important;
     }
 
-    /* TAB 2: DOMINIO - Show Sidebar (Logros, Formacion, Lang) and Skills Universe */
-    body.tab-estrategia #section-hero,
-    body.tab-estrategia #section-metrics,
-    body.tab-estrategia .main-column, /* Hide Resumen and Milestones */
-    body.tab-estrategia .executive-synchro-footer,
-    body.tab-estrategia .print-page-break {
+    /* Tab 2: CAMPOS */
+    body.tab-campos #section-hero,
+    body.tab-campos .metrics-grid,
+    body.tab-campos .main-column {
         display: none !important;
     }
 
-    /* EXPRESSLY SHOW DESIRED FIELDS IN TAB 2 */
-    body.tab-estrategia .sidebar-column,
-    body.tab-estrategia #section-skills {
+    body.tab-campos .sidebar-column,
+    body.tab-campos #section-skills {
         display: block !important;
     }
-
-    /* Tab 3: MENSAJE (Sync footer) */
-    body.tab-mensaje #section-hero,
-    body.tab-mensaje #section-metrics,
-    body.tab-mensaje #layout-1,
-    body.tab-mensaje #layout-2,
-    body.tab-mensaje #section-skills,
-    body.tab-mensaje .print-page-break {
-        display: none !important;
-    }
-
-    body.tab-mensaje .executive-synchro-footer {
+    
+    body.tab-campos .executive-synchro-footer {
         display: flex !important;
         margin-top: 0;
     }
+    
+    /* ALWAYS hide print breaks on mobile */
+    .print-page-break { display: none !important; }
 }
 
 /* NAVIGATION COMPONENT STYLES */
