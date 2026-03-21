@@ -11,42 +11,7 @@
     <!-- Ionicons -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <link rel="stylesheet" href="style.css?v=5.0">
-    <style>
-        /* INLINE CSS TO CRUSH SAFARI CACHE ISSUES */
-        @media (max-width: 768px) {
-            /* TABS LOGIC - 2 TABS EXTREMELY SPECIFIC */
-            /* Tab 1: PERFIL */
-            body.tab-perfil .sidebar-column,
-            body.tab-perfil #section-skills,
-            body.tab-perfil .executive-synchro-footer {
-                display: none !important;
-            }
-
-            body.tab-perfil #section-hero,
-            body.tab-perfil .metrics-grid,
-            body.tab-perfil .main-column {
-                display: block !important;
-            }
-
-            /* Tab 2: CAMPOS */
-            body.tab-campos #section-hero,
-            body.tab-campos .metrics-grid,
-            body.tab-campos .main-column {
-                display: none !important;
-            }
-
-            body.tab-campos .sidebar-column,
-            body.tab-campos #section-skills {
-                display: block !important;
-            }
-
-            body.tab-campos .executive-synchro-footer {
-                display: flex !important;
-                margin-top: 0;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css?v=6.0">
 </head>
 <body class="dark-theme tab-perfil">
     <div class="web-cv-container">
@@ -378,22 +343,39 @@
 
     <!-- JavaScript for Tabs and Download -->
     <script>
+        function applyMobileLayout(isPerfil) {
+            document.getElementById('section-hero').style.display = isPerfil ? 'block' : 'none';
+            document.getElementById('section-metrics').style.display = isPerfil ? 'flex' : 'none';
+            document.getElementById('layout-1').style.display = isPerfil ? 'block' : 'none';
+            document.getElementById('layout-2').style.display = isPerfil ? 'none' : 'block';
+            document.getElementById('section-skills').style.display = isPerfil ? 'none' : 'block';
+            var footer = document.querySelector('.executive-synchro-footer');
+            if (footer) footer.style.display = isPerfil ? 'none' : 'flex';
+            document.querySelectorAll('.print-page-break').forEach(function(el) { el.style.display = 'none'; });
+        }
+
         function showTab(tabName) {
-            // Update body class for CSS targeting
-            document.body.className = 'dark-theme tab-' + tabName;
-            
-            // Update active nav item status
-            const navItems = document.querySelectorAll('.nav-item');
-            navItems.forEach(item => {
+            // Update active nav item
+            document.querySelectorAll('.nav-item').forEach(function(item) {
                 item.classList.remove('active');
-                if (item.getAttribute('onclick').includes("'" + tabName + "'")) {
+                if (item.getAttribute('onclick') && item.getAttribute('onclick').indexOf(tabName) !== -1) {
                     item.classList.add('active');
                 }
             });
-            
-            // Scroll to top
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            if (window.innerWidth <= 768) {
+                applyMobileLayout(tabName === 'perfil');
+            }
+
+            window.scrollTo(0, 0);
         }
+
+        // On page load: set correct initial mobile state
+        window.addEventListener('load', function() {
+            if (window.innerWidth <= 768) {
+                applyMobileLayout(true); // Start on Perfil tab
+            }
+        });
 
         document.getElementById('downloadBtn').addEventListener('click', function(e) {
             window.print();
