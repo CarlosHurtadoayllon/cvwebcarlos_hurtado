@@ -784,7 +784,7 @@ h1, h2, h3 { font-family: 'Outfit', sans-serif; }
     .synchro-btn { flex: 0 1 auto; justify-content: center; }
 }
 
-/* 📲 SMARTPHONE OPTIMIZATION & TAB SYSTEM (Mirroring Hjalmar) */
+/* 📲 SMARTPHONE OPTIMIZATION (Tab System) */
 @media (max-width: 768px) {
     .mobile-nav { display: flex; }
 
@@ -807,27 +807,25 @@ h1, h2, h3 { font-family: 'Outfit', sans-serif; }
     /* TAB 1: PERFIL - Show Hero, Metrics, Resumen, Milestones */
     body.tab-perfil .sidebar-column, 
     body.tab-perfil #section-skills,
-    body.tab-perfil #section-synchro,
+    body.tab-perfil .executive-synchro-footer,
     body.tab-perfil .print-page-break {
         display: none !important;
     }
 
-    /* Keep main columns visible in Perfil */
-    body.tab-perfil #layout-1 .main-column,
-    body.tab-perfil #layout-2 .main-column {
+    body.tab-perfil .main-column {
         display: block !important;
     }
 
-    /* TAB 2: DOMINIO - Show Sidebar (Logros, Formacion, Lang) and Skills */
+    /* TAB 2: DOMINIO - Show Sidebar (Logros, Formacion, Lang) and Skills Universe */
     body.tab-estrategia #section-hero,
     body.tab-estrategia #section-metrics,
     body.tab-estrategia .main-column, /* Hide Resumen and Milestones */
-    body.tab-estrategia #section-synchro,
+    body.tab-estrategia .executive-synchro-footer,
     body.tab-estrategia .print-page-break {
         display: none !important;
     }
 
-    /* Expressly show what's needed in Dominio */
+    /* EXPRESSLY SHOW DESIRED FIELDS IN TAB 2 */
     body.tab-estrategia .sidebar-column,
     body.tab-estrategia #section-skills {
         display: block !important;
@@ -843,22 +841,9 @@ h1, h2, h3 { font-family: 'Outfit', sans-serif; }
         display: none !important;
     }
 
-    /* Visual adjustments for Strategy tab on mobile */
-    body.tab-estrategia #section-skills {
-        display: block !important;
+    body.tab-mensaje .executive-synchro-footer {
+        display: flex !important;
         margin-top: 0;
-        padding-top: 0;
-        border-top: none;
-    }
-    
-    body.tab-estrategia .section-header.center {
-        text-align: left;
-        justify-content: flex-start;
-        margin-bottom: 20px;
-    }
-    
-    body.tab-estrategia .section-header.center h2 {
-        font-size: 1.5rem;
     }
 }
 
@@ -869,7 +854,7 @@ h1, h2, h3 { font-family: 'Outfit', sans-serif; }
     bottom: 0;
     left: 0;
     right: 0;
-    background: rgba(10, 14, 20, 0.95);
+    background: rgba(10, 14, 20, 0.98);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -877,7 +862,7 @@ h1, h2, h3 { font-family: 'Outfit', sans-serif; }
     z-index: 9999;
     justify-content: space-around;
     align-items: center;
-    box-shadow: 0 -10px 40px rgba(0,0,0,0.6);
+    box-shadow: 0 -10px 40px rgba(0,0,0,0.8);
 }
 
 .nav-item {
