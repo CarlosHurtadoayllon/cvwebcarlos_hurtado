@@ -725,17 +725,63 @@ h1, h2, h3 { font-family: 'Outfit', sans-serif; }
     .hero-content { flex-direction: column; align-items: center; text-align: center; gap: 40px; }
     .hero-name { font-size: 3rem; white-space: normal; }
     .hero-role { margin: 0 auto 40px; }
-    .contact-interface { flex-direction: column; align-items: center; width: 100%; gap: 30px; }
-    .contact-left-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; width: 100%; }
-    .contact-right-actions { width: 100%; }
-    .action-btn { width: 100%; }
-    .metrics-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+    
+    .contact-interface { 
+        flex-direction: column; 
+        align-items: center; 
+        width: 100%; 
+        gap: 25px; 
+    }
+    
+    /* Contact bubbles as small chips (Hjalmar Style) */
+    .contact-left-grid { 
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        width: 100%; 
+    }
+    
+    .info-pill {
+        flex: 0 1 auto;
+        padding: 8px 16px;
+        font-size: 0.85rem;
+        height: auto;
+    }
+
+    /* Action buttons as grouped chips */
+    .contact-right-actions { 
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        width: 100%; 
+    }
+    
+    .action-btn { 
+        flex: 0 1 auto; 
+        min-width: auto;
+        padding: 10px 20px;
+    }
+
+    /* Metrics as full-width boxes (Image 2 request) */
+    .metrics-grid { 
+        grid-template-columns: 1fr; 
+        gap: 15px; 
+    }
+    
+    .metric-card {
+        width: 100%;
+        justify-content: flex-start;
+        padding: 25px;
+    }
+
     .content-layout { grid-template-columns: 1fr; gap: 40px; }
     .skills-universe { grid-template-columns: 1fr; gap: 30px; }
     .executive-synchro-footer { flex-direction: column; text-align: center; padding: 40px 20px; gap: 40px; }
     .synchro-content p { margin-left: auto; margin-right: auto; }
-    .synchro-actions { justify-content: center; flex-direction: column; width: 100%; }
-    .synchro-btn { width: 100%; justify-content: center; }
+    .synchro-actions { justify-content: center; flex-direction: row; flex-wrap: wrap; width: 100%; }
+    .synchro-btn { flex: 0 1 auto; justify-content: center; }
 }
 
 /* 📲 SMARTPHONE OPTIMIZATION & TAB SYSTEM (Mirroring Hjalmar) */
@@ -747,8 +793,8 @@ h1, h2, h3 { font-family: 'Outfit', sans-serif; }
     .hero-name { font-size: 2.2rem; letter-spacing: -1px; }
     .executive-badge { font-size: 0.65rem; padding: 4px 12px; }
     
-    .contact-left-grid { grid-template-columns: 1fr; }
-    .info-pill { font-size: 0.8rem; padding: 8px 15px; }
+    .info-pill { font-size: 0.8rem; padding: 6px 12px; }
+    .action-btn { padding: 8px 16px; font-size: 0.85rem; }
 
     .metric-card { padding: 20px; gap: 15px; }
     .metric-value { font-size: 1.5rem; }
