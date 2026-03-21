@@ -719,13 +719,141 @@ h1, h2, h3 { font-family: 'Outfit', sans-serif; }
     }
 }
 
+/* 📱 MOBILE CONFIGURATION (Executive Engine v2) */
 @media (max-width: 1024px) {
-    .hero-content { flex-direction: column; gap: 40px; }
-    .hero-name { font-size: 2.8rem; white-space: normal; }
-    .contact-interface { flex-direction: column; }
-    .metrics-grid { grid-template-columns: repeat(2, 1fr); }
-    .content-layout { grid-template-columns: 1fr; }
-    .skills-universe { grid-template-columns: 1fr; }
-    .executive-synchro-footer { flex-direction: column; text-align: center; padding: 40px; }
-    .synchro-actions { justify-content: center; flex-direction: column; }
+    .web-cv-container { padding: 40px 30px; }
+    .hero-content { flex-direction: column; align-items: center; text-align: center; gap: 40px; }
+    .hero-name { font-size: 3rem; white-space: normal; }
+    .hero-role { margin: 0 auto 40px; }
+    .contact-interface { flex-direction: column; align-items: center; width: 100%; gap: 30px; }
+    .contact-left-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; width: 100%; }
+    .contact-right-actions { width: 100%; }
+    .action-btn { width: 100%; }
+    .metrics-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+    .content-layout { grid-template-columns: 1fr; gap: 40px; }
+    .skills-universe { grid-template-columns: 1fr; gap: 30px; }
+    .executive-synchro-footer { flex-direction: column; text-align: center; padding: 40px 20px; gap: 40px; }
+    .synchro-content p { margin-left: auto; margin-right: auto; }
+    .synchro-actions { justify-content: center; flex-direction: column; width: 100%; }
+    .synchro-btn { width: 100%; justify-content: center; }
+}
+
+/* 📲 SMARTPHONE OPTIMIZATION & TAB SYSTEM (Mirroring Hjalmar) */
+@media (max-width: 768px) {
+    .mobile-nav { display: flex; }
+
+    .web-cv-container { padding: 30px 15px 100px; } /* Bottom padding for nav */
+
+    .hero-name { font-size: 2.2rem; letter-spacing: -1px; }
+    .executive-badge { font-size: 0.65rem; padding: 4px 12px; }
+    
+    .contact-left-grid { grid-template-columns: 1fr; }
+    .info-pill { font-size: 0.8rem; padding: 8px 15px; }
+
+    .metric-card { padding: 20px; gap: 15px; }
+    .metric-value { font-size: 1.5rem; }
+    
+    .glass-card, .job-card { padding: 20px; }
+    .timeline { padding-left: 20px; }
+    .job-title-group h3 { font-size: 1.1rem; }
+    .job-header { flex-direction: column; gap: 10px; }
+
+    /* TAB VISIBILITY LOGIC */
+    /* Tab 1: PERFIL */
+    body.tab-perfil .sidebar-column,
+    body.tab-perfil #section-skills,
+    body.tab-perfil #section-synchro,
+    body.tab-perfil .print-page-break {
+        display: none !important;
+    }
+
+    /* Tab 2: ESTRATEGIA */
+    body.tab-estrategia #section-hero,
+    body.tab-estrategia #section-metrics,
+    body.tab-estrategia #layout-1 .main-column,
+    body.tab-estrategia #layout-2 .main-column,
+    body.tab-estrategia #section-synchro,
+    body.tab-estrategia .print-page-break {
+        display: none !important;
+    }
+
+    /* Tab 3: MENSAJE */
+    body.tab-mensaje #section-hero,
+    body.tab-mensaje #section-metrics,
+    body.tab-mensaje #layout-1,
+    body.tab-mensaje #layout-2,
+    body.tab-mensaje #section-skills,
+    body.tab-mensaje .print-page-break {
+        display: none !important;
+    }
+
+    /* Visual adjustments for Strategy tab on mobile */
+    body.tab-estrategia #section-skills {
+        display: block !important;
+        margin-top: 0;
+        padding-top: 0;
+        border-top: none;
+    }
+    
+    body.tab-estrategia .section-header.center {
+        text-align: left;
+        justify-content: flex-start;
+        margin-bottom: 20px;
+    }
+    
+    body.tab-estrategia .section-header.center h2 {
+        font-size: 1.5rem;
+    }
+}
+
+/* NAVIGATION COMPONENT STYLES */
+.mobile-nav {
+    display: none; /* Desktop hidden */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(10, 14, 20, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 12px 10px 15px;
+    z-index: 9999;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 -10px 40px rgba(0,0,0,0.6);
+}
+
+.nav-item {
+    background: none;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: var(--transition);
+    flex: 1;
+    outline: none;
+}
+
+.nav-item ion-icon {
+    font-size: 1.6rem;
+}
+
+.nav-item span {
+    font-size: 0.65rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.nav-item.active {
+    color: var(--accent);
+}
+
+.nav-item.active ion-icon {
+    transform: translateY(-2px);
+    filter: drop-shadow(0 0 8px var(--accent-glow));
 }
