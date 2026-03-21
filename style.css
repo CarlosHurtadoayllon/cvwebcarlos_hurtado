@@ -804,26 +804,36 @@ h1, h2, h3 { font-family: 'Outfit', sans-serif; }
     .job-title-group h3 { font-size: 1.1rem; }
     .job-header { flex-direction: column; gap: 10px; }
 
-    /* TAB VISIBILITY LOGIC */
-    /* Tab 1: PERFIL */
-    body.tab-perfil .sidebar-column,
+    /* Tab 1: PERFIL & EXPERIENCIA */
+    body.tab-perfil .sidebar-column, /* This hides sidebar-column of layout-1 AND layout-2 */
+    body.tab-perfil #layout-1 .main-column, /* Ensure Resumen is shown if we want it here, but user says it's missing */
     body.tab-perfil #section-skills,
     body.tab-perfil #section-synchro,
     body.tab-perfil .print-page-break {
         display: none !important;
     }
 
-    /* Tab 2: ESTRATEGIA */
+    /* SPECIFIC FIX: Show Resumen (main-column of layout-1) in Perfil tab */
+    body.tab-perfil #layout-1 .main-column {
+        display: block !important;
+    }
+
+    /* Tab 2: ESTRATEGIA & DOMINIO (Shows Skills, Logros, Formacion, Idiomas, Dominio) */
     body.tab-estrategia #section-hero,
     body.tab-estrategia #section-metrics,
-    body.tab-estrategia #layout-1 .main-column,
-    body.tab-estrategia #layout-2 .main-column,
+    body.tab-estrategia #layout-1 .main-column, /* Hide Resumen content */
+    body.tab-estrategia #layout-2 .main-column, /* Hide Career Milestones */
     body.tab-estrategia #section-synchro,
     body.tab-estrategia .print-page-break {
         display: none !important;
     }
 
-    /* Tab 3: MENSAJE */
+    /* Force show sidebar columns in Estrategia tab */
+    body.tab-estrategia .sidebar-column {
+        display: block !important;
+    }
+
+    /* Tab 3: MENSAJE (Sync footer) */
     body.tab-mensaje #section-hero,
     body.tab-mensaje #section-metrics,
     body.tab-mensaje #layout-1,
