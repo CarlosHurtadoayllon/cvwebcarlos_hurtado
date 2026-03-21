@@ -13,10 +13,10 @@
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="dark-theme">
+<body class="dark-theme tab-perfil">
     <div class="web-cv-container">
         <!-- Hero Section -->
-        <div class="hero-section">
+        <div class="hero-section" id="section-hero">
             <div class="hero-content">
                 <div class="hero-text">
                     <div class="executive-badge">PERFIL EJECUTIVO / SENIOR MANAGEMENT</div>
@@ -83,7 +83,7 @@
             </div>
 
         <!-- Metric Cards Grid -->
-        <div class="metrics-grid">
+        <div class="metrics-grid" id="section-metrics">
             <div class="metric-card">
                 <ion-icon name="time-outline" class="metric-icon"></ion-icon>
                 <div class="metric-content">
@@ -115,7 +115,7 @@
         </div>
 
         <!-- PAGE 1 BLOCK: Resumen + Logros -->
-        <div class="content-layout">
+        <div class="content-layout" id="layout-1">
             <div class="main-column">
                 <section class="content-section">
                     <div class="section-header">
@@ -167,7 +167,7 @@
         <div class="print-page-break"></div>
 
         <!-- PAGE 2 BLOCK: Hitos de Carrera + Formación + Idiomas -->
-        <div class="content-layout">
+        <div class="content-layout" id="layout-2">
             <div class="main-column">
                 <section class="content-section">
                     <div class="section-header">
@@ -256,7 +256,7 @@
             </div>
         </div>
 
-        <footer class="footer-skills">
+        <footer class="footer-skills" id="section-skills">
             <div class="section-header center">
                 <ion-icon name="analytics-outline"></ion-icon>
                 <h2>Áreas de Dominio Estratégico</h2>
@@ -295,7 +295,7 @@
             </div>
 
             <!-- Executive Synchro / Call to Action (Mirroring Hjalmar) - Moved to Final Bottom -->
-            <div class="executive-synchro-footer">
+            <div class="executive-synchro-footer" id="section-synchro">
                 <div class="synchro-content">
                     <span class="synchro-tag"><ion-icon name="radio-outline"></ion-icon> SINCRONIZACIÓN DIRECTA</span>
                     <h2>ESTRATEGIA & <span class="accent-text">EJECUCIÓN INDUSTRIAL</span></h2>
@@ -328,12 +328,46 @@
             </div>
         </footer>
     </div>
-    <!-- JavaScript for Download Trigger -->
+    
+    <!-- MOBILE NAVIGATION TABS (Hjalmar Style) -->
+    <nav class="mobile-nav no-print">
+        <button class="nav-item active" onclick="showTab('perfil')">
+            <ion-icon name="person-circle-outline"></ion-icon>
+            <span>Perfil & Exp</span>
+        </button>
+        <button class="nav-item" onclick="showTab('estrategia')">
+            <ion-icon name="ribbon-outline"></ion-icon>
+            <span>Estrategia</span>
+        </button>
+        <button class="nav-item" onclick="showTab('mensaje')">
+            <ion-icon name="chatbubbles-outline"></ion-icon>
+            <span>Mensaje</span>
+        </button>
+    </nav>
+
+    <!-- JavaScript for Tabs and Download -->
     <script>
-        // Button Logic
+        function showTab(tabName) {
+            // Update body class for CSS targeting
+            document.body.className = 'dark-theme tab-' + tabName;
+            
+            // Update active nav item status
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.querySelector('span').innerText.toLowerCase().includes(tabName.substring(0,3))) {
+                    item.classList.add('active');
+                }
+            });
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
         document.getElementById('downloadBtn').addEventListener('click', function(e) {
             window.print();
         });
     </script>
 </body>
 </html>
+
