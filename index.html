@@ -11,7 +11,42 @@
     <!-- Ionicons -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <link rel="stylesheet" href="style.css?v=4.0">
+    <link rel="stylesheet" href="style.css?v=5.0">
+    <style>
+        /* INLINE CSS TO CRUSH SAFARI CACHE ISSUES */
+        @media (max-width: 768px) {
+            /* TABS LOGIC - 2 TABS EXTREMELY SPECIFIC */
+            /* Tab 1: PERFIL */
+            body.tab-perfil .sidebar-column,
+            body.tab-perfil #section-skills,
+            body.tab-perfil .executive-synchro-footer {
+                display: none !important;
+            }
+
+            body.tab-perfil #section-hero,
+            body.tab-perfil .metrics-grid,
+            body.tab-perfil .main-column {
+                display: block !important;
+            }
+
+            /* Tab 2: CAMPOS */
+            body.tab-campos #section-hero,
+            body.tab-campos .metrics-grid,
+            body.tab-campos .main-column {
+                display: none !important;
+            }
+
+            body.tab-campos .sidebar-column,
+            body.tab-campos #section-skills {
+                display: block !important;
+            }
+
+            body.tab-campos .executive-synchro-footer {
+                display: flex !important;
+                margin-top: 0;
+            }
+        }
+    </style>
 </head>
 <body class="dark-theme tab-perfil">
     <div class="web-cv-container">
