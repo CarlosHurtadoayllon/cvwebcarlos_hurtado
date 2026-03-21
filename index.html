@@ -344,13 +344,26 @@
     <!-- JavaScript for Tabs and Download -->
     <script>
         function applyMobileLayout(isPerfil) {
+            // PERFIL tab shows: hero, metrics, main-columns (Resumen, Hitos)
+            // MAS INFO tab shows: sidebar-columns (Logros, Formacion, Idiomas), section-skills and synchro footer
+
             document.getElementById('section-hero').style.display = isPerfil ? 'block' : 'none';
             document.getElementById('section-metrics').style.display = isPerfil ? 'flex' : 'none';
-            document.getElementById('layout-1').style.display = isPerfil ? 'block' : 'none';
-            document.getElementById('layout-2').style.display = isPerfil ? 'none' : 'block';
+
+            // Main columns (Resumen + Hitos de Carrera) — only in Perfil
+            document.querySelectorAll('.main-column').forEach(function(el) {
+                el.style.display = isPerfil ? 'block' : 'none';
+            });
+
+            // Sidebar columns (Logros + Formación + Idiomas) — only in Más Info
+            document.querySelectorAll('.sidebar-column').forEach(function(el) {
+                el.style.display = isPerfil ? 'none' : 'block';
+            });
+
+            // Áreas de Dominio Estratégico — only in Más Info
             document.getElementById('section-skills').style.display = isPerfil ? 'none' : 'block';
-            var footer = document.querySelector('.executive-synchro-footer');
-            if (footer) footer.style.display = isPerfil ? 'none' : 'flex';
+
+            // Print breaks: always hidden on mobile
             document.querySelectorAll('.print-page-break').forEach(function(el) { el.style.display = 'none'; });
         }
 
