@@ -341,34 +341,31 @@
         </button>
     </nav>
 
-    <!-- JavaScript for Tabs and Download -->
+    <!-- JavaScript para Pestañas -->
     <script>
         function applyMobileLayout(isPerfil) {
-            // PERFIL tab shows: hero, metrics, main-columns (Resumen, Hitos)
-            // MAS INFO tab shows: sidebar-columns (Logros, Formacion, Idiomas), section-skills and synchro footer
-
             document.getElementById('section-hero').style.display = isPerfil ? 'block' : 'none';
             document.getElementById('section-metrics').style.display = isPerfil ? 'flex' : 'none';
 
-            // Main columns (Resumen + Hitos de Carrera) — only in Perfil
+            // Columnas principales → solo en Perfil
             document.querySelectorAll('.main-column').forEach(function(el) {
                 el.style.display = isPerfil ? 'block' : 'none';
             });
 
-            // Sidebar columns (Logros + Formación + Idiomas) — only in Más Info
+            // Columnas laterales → solo en Más Info
             document.querySelectorAll('.sidebar-column').forEach(function(el) {
                 el.style.display = isPerfil ? 'none' : 'block';
             });
 
-            // Áreas de Dominio Estratégico — only in Más Info
+            // Áreas de Dominio Estratégico → solo en Más Info
             document.getElementById('section-skills').style.display = isPerfil ? 'none' : 'block';
 
-            // Print breaks: always hidden on mobile
+            // Saltos de impresión: siempre ocultos en móvil
             document.querySelectorAll('.print-page-break').forEach(function(el) { el.style.display = 'none'; });
         }
 
         function showTab(tabName) {
-            // Update active nav item
+            // Marcar pestaña activa
             document.querySelectorAll('.nav-item').forEach(function(item) {
                 item.classList.remove('active');
                 if (item.getAttribute('onclick') && item.getAttribute('onclick').indexOf(tabName) !== -1) {
@@ -376,19 +373,14 @@
                 }
             });
 
-            if (window.innerWidth <= 768) {
-                applyMobileLayout(tabName === 'perfil');
-            }
+            // Aplicar layout (sin comprobar ancho — los botones solo son visibles en móvil)
+            applyMobileLayout(tabName === 'perfil');
 
             window.scrollTo(0, 0);
         }
 
-        // On page load: set correct initial mobile state
-        window.addEventListener('load', function() {
-            if (window.innerWidth <= 768) {
-                applyMobileLayout(true); // Start on Perfil tab
-            }
-        });
+        // Al cargar la página: iniciar en pestaña Perfil
+        applyMobileLayout(true);
 
         document.getElementById('downloadBtn').addEventListener('click', function(e) {
             window.print();
