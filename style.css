@@ -804,32 +804,32 @@ h1, h2, h3 { font-family: 'Outfit', sans-serif; }
     .job-title-group h3 { font-size: 1.1rem; }
     .job-header { flex-direction: column; gap: 10px; }
 
-    /* Tab 1: PERFIL & EXPERIENCIA */
-    body.tab-perfil .sidebar-column, /* This hides sidebar-column of layout-1 AND layout-2 */
-    body.tab-perfil #layout-1 .main-column, /* Ensure Resumen is shown if we want it here, but user says it's missing */
+    /* TAB 1: PERFIL - Show Hero, Metrics, Resumen, Milestones */
+    body.tab-perfil .sidebar-column, 
     body.tab-perfil #section-skills,
     body.tab-perfil #section-synchro,
     body.tab-perfil .print-page-break {
         display: none !important;
     }
 
-    /* SPECIFIC FIX: Show Resumen (main-column of layout-1) in Perfil tab */
-    body.tab-perfil #layout-1 .main-column {
+    /* Keep main columns visible in Perfil */
+    body.tab-perfil #layout-1 .main-column,
+    body.tab-perfil #layout-2 .main-column {
         display: block !important;
     }
 
-    /* Tab 2: ESTRATEGIA & DOMINIO (Shows Skills, Logros, Formacion, Idiomas, Dominio) */
+    /* TAB 2: DOMINIO - Show Sidebar (Logros, Formacion, Lang) and Skills */
     body.tab-estrategia #section-hero,
     body.tab-estrategia #section-metrics,
-    body.tab-estrategia #layout-1 .main-column, /* Hide Resumen content */
-    body.tab-estrategia #layout-2 .main-column, /* Hide Career Milestones */
+    body.tab-estrategia .main-column, /* Hide Resumen and Milestones */
     body.tab-estrategia #section-synchro,
     body.tab-estrategia .print-page-break {
         display: none !important;
     }
 
-    /* Force show sidebar columns in Estrategia tab */
-    body.tab-estrategia .sidebar-column {
+    /* Expressly show what's needed in Dominio */
+    body.tab-estrategia .sidebar-column,
+    body.tab-estrategia #section-skills {
         display: block !important;
     }
 
