@@ -343,29 +343,11 @@
 
     <!-- JavaScript para Pestañas -->
     <script>
-        function applyMobileLayout(isPerfil) {
-            document.getElementById('section-hero').style.display = isPerfil ? 'block' : 'none';
-            document.getElementById('section-metrics').style.display = isPerfil ? 'flex' : 'none';
-
-            // Columnas principales → solo en Perfil
-            document.querySelectorAll('.main-column').forEach(function(el) {
-                el.style.display = isPerfil ? 'block' : 'none';
-            });
-
-            // Columnas laterales → solo en Más Info
-            document.querySelectorAll('.sidebar-column').forEach(function(el) {
-                el.style.display = isPerfil ? 'none' : 'block';
-            });
-
-            // Áreas de Dominio Estratégico → solo en Más Info
-            document.getElementById('section-skills').style.display = isPerfil ? 'none' : 'block';
-
-            // Saltos de impresión: siempre ocultos en móvil
-            document.querySelectorAll('.print-page-break').forEach(function(el) { el.style.display = 'none'; });
-        }
-
         function showTab(tabName) {
-            // Marcar pestaña activa
+            // Update body class — CSS will handle ALL visibility via body.tab-X rules
+            document.body.className = 'dark-theme tab-' + tabName;
+
+            // Mark correct nav button as active
             document.querySelectorAll('.nav-item').forEach(function(item) {
                 item.classList.remove('active');
                 if (item.getAttribute('onclick') && item.getAttribute('onclick').indexOf(tabName) !== -1) {
@@ -373,14 +355,11 @@
                 }
             });
 
-            // Aplicar layout (sin comprobar ancho — los botones solo son visibles en móvil)
-            applyMobileLayout(tabName === 'perfil');
-
             window.scrollTo(0, 0);
         }
 
-        // Al cargar la página: iniciar en pestaña Perfil
-        applyMobileLayout(true);
+        // Map the "campos" button to the CSS class "campos"
+        // Body starts as tab-perfil (set in HTML) — CSS handles initial state
 
         document.getElementById('downloadBtn').addEventListener('click', function(e) {
             window.print();
