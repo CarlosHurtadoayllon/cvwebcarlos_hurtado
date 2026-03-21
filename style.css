@@ -857,51 +857,51 @@ h1, h2, h3 { font-family: 'Outfit', sans-serif; }
 
     /* ALWAYS hide print breaks on mobile */
     .print-page-break { display: none !important; }
-}
 
-/* ===================================================
-   TAB SYSTEM - GLOBAL (funciona en cualquier viewport)
-   tab-perfil: muestra Hero + Métricas + columnas principales
-   tab-campos: muestra columnas laterales + Áreas de Dominio
-   =================================================== */
+    /* ===================================================
+       TAB SYSTEM - MOBILE ONLY
+       tab-perfil: muestra Hero + Métricas + columnas principales
+       tab-campos: muestra columnas laterales + Áreas de Dominio
+       =================================================== */
 
-/* TAB PERFIL: ocultar columnas laterales y skills */
-body.tab-perfil .sidebar-column,
-body.tab-perfil #section-skills,
-body.tab-perfil .executive-synchro-footer {
-    display: none !important;
-}
+    /* TAB PERFIL: ocultar columnas laterales y skills en móvil */
+    body.tab-perfil .sidebar-column,
+    body.tab-perfil #section-skills,
+    body.tab-perfil .executive-synchro-footer {
+        display: none !important;
+    }
 
-body.tab-perfil #section-hero,
-body.tab-perfil #section-metrics,
-body.tab-perfil .main-column {
-    display: block !important;
-}
+    body.tab-perfil #section-hero,
+    body.tab-perfil #section-metrics,
+    body.tab-perfil .main-column {
+        display: block !important;
+    }
 
-body.tab-perfil .metrics-grid {
-    display: flex !important;
-}
+    body.tab-perfil .metrics-grid {
+        display: flex !important;
+    }
 
-/* TAB MÁS INFO: ocultar hero/métricas/columnas principales, mostrar laterales */
-body.tab-campos #section-hero,
-body.tab-campos #section-metrics,
-body.tab-campos .main-column {
-    display: none !important;
-}
+    /* TAB MÁS INFO: ocultar hero/métricas/columnas principales, mostrar laterales en móvil */
+    body.tab-campos #section-hero,
+    body.tab-campos #section-metrics,
+    body.tab-campos .main-column {
+        display: none !important;
+    }
 
-body.tab-campos .metrics-grid {
-    display: none !important;
-}
+    body.tab-campos .metrics-grid {
+        display: none !important;
+    }
 
-body.tab-campos .sidebar-column {
-    display: block !important;
-}
+    body.tab-campos .sidebar-column {
+        display: block !important;
+    }
 
-body.tab-campos #section-skills {
-    display: block !important;
-}
+    body.tab-campos #section-skills {
+        display: block !important;
+    }
 
-body.tab-campos .executive-synchro-footer {
-    display: flex !important;
+    body.tab-campos .executive-synchro-footer {
+        display: flex !important;
+    }
 }
 
