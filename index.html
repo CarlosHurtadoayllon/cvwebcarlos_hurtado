@@ -333,15 +333,15 @@
     <nav class="mobile-nav no-print">
         <button class="nav-item active" onclick="showTab('perfil')">
             <ion-icon name="person-circle-outline"></ion-icon>
-            <span>Perfil & Exp</span>
+            <span>Perfil</span>
         </button>
         <button class="nav-item" onclick="showTab('estrategia')">
-            <ion-icon name="ribbon-outline"></ion-icon>
-            <span>Estrategia</span>
+            <ion-icon name="layers-outline"></ion-icon>
+            <span>Dominio</span>
         </button>
         <button class="nav-item" onclick="showTab('mensaje')">
-            <ion-icon name="chatbubbles-outline"></ion-icon>
-            <span>Mensaje</span>
+            <ion-icon name="paper-plane-outline"></ion-icon>
+            <span>Contacto</span>
         </button>
     </nav>
 
@@ -355,7 +355,7 @@
             const navItems = document.querySelectorAll('.nav-item');
             navItems.forEach(item => {
                 item.classList.remove('active');
-                if (item.querySelector('span').innerText.toLowerCase().includes(tabName.substring(0,3))) {
+                if (item.getAttribute('onclick').includes("'" + tabName + "'")) {
                     item.classList.add('active');
                 }
             });
@@ -370,4 +370,3 @@
     </script>
 </body>
 </html>
-
