@@ -11,15 +11,44 @@
     <!-- Ionicons -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <!-- Favicon & App Icons -->
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="favicon-512.png">
-    <link rel="stylesheet" href="style.css?v=12.0">
+    <link rel="stylesheet" href="style.css?v=5.0">
+    <style>
+        /* INLINE CSS TO CRUSH SAFARI CACHE ISSUES */
+        @media (max-width: 768px) {
+            /* TABS LOGIC - 2 TABS EXTREMELY SPECIFIC */
+            /* Tab 1: PERFIL */
+            body.tab-perfil .sidebar-column,
+            body.tab-perfil #section-skills,
+            body.tab-perfil .executive-synchro-footer {
+                display: none !important;
+            }
 
+            body.tab-perfil #section-hero,
+            body.tab-perfil .metrics-grid,
+            body.tab-perfil .main-column {
+                display: block !important;
+            }
+
+            /* Tab 2: CAMPOS */
+            body.tab-campos #section-hero,
+            body.tab-campos .metrics-grid,
+            body.tab-campos .main-column {
+                display: none !important;
+            }
+
+            body.tab-campos .sidebar-column,
+            body.tab-campos #section-skills {
+                display: block !important;
+            }
+
+            body.tab-campos .executive-synchro-footer {
+                display: flex !important;
+                margin-top: 0;
+            }
+        }
+    </style>
 </head>
-<body class="dark-theme tab-perfil">
+<body class="dark-theme tab-campos">
     <div class="web-cv-container">
         <!-- Hero Section -->
         <div class="hero-section" id="section-hero">
@@ -84,8 +113,6 @@
                     </div>
                 </div>
             </div>
-
-        </div><!-- /#section-hero CLOSE -->
 
         <!-- Metric Cards Grid -->
         <div class="metrics-grid" id="section-metrics">
@@ -346,7 +373,29 @@
         </button>
     </nav>
 
-    <!-- JavaScript para Pestañas -->
+    <!-- JavaScript for Tabs and Download -->
+    <script>
+        function showTab(tabName) {
+            // Update body class for CSS targeting
+            document.body.className = 'dark-theme tab-' + tabName;
+            
+            // Update active nav item status
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('onclick').includes("'" + tabName + "'")) {
+                    item.classList.add('active');
+                }
+            });
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        document.getElementById('downloadBtn').addEventListener('click', function(e) {
+            window.print();
+        });
+    </script>
     <!-- AI ASSISTANT CUSTOM BUTTON (Mirroring Hjalmar's Premium Style) -->
     <style>
         #custom-ia-btn {
@@ -419,29 +468,6 @@
         </div>
     </div>
 
-    <script>
-        function showTab(tabName) {
-            // Update body class — CSS will handle ALL visibility via body.tab-X rules
-            document.body.className = 'dark-theme tab-' + tabName;
-
-            // Mark correct nav button as active
-            document.querySelectorAll('.nav-item').forEach(function(item) {
-                item.classList.remove('active');
-                if (item.getAttribute('onclick') && item.getAttribute('onclick').indexOf(tabName) !== -1) {
-                    item.classList.add('active');
-                }
-            });
-
-            window.scrollTo(0, 0);
-        }
-
-        // Map the "campos" button to the CSS class "campos"
-        // Body starts as tab-perfil (set in HTML) — CSS handles initial state
-
-        document.getElementById('downloadBtn').addEventListener('click', function(e) {
-            window.print();
-        });
-    </script>
     <!-- Voiceflow Assistant Integration -->
     <script type="text/javascript">
       (function(d, t) {
